@@ -1,5 +1,7 @@
 
 
+
+
 namespace API.Extensions
 {
     public static class ApplicationServiceExtensions
@@ -9,6 +11,7 @@ namespace API.Extensions
         {
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ITokenService, TokenService>();
             services.AddDbContext<DataContext>(options =>
             {
                 options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
