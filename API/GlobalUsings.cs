@@ -8,3 +8,4 @@ global using API.DTOs;
 global using API.Helpers;
 global using API.Interfaces;
 global using Microsoft.AspNetCore.Mvc;
+global using System.Text;
