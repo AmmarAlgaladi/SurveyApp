@@ -8,5 +8,6 @@ namespace API.Interfaces
     public interface IUserRepository
     {
         Task<UserDTO> GetUserAsync(string username);
+        Task<AppUser> GetUserByUsernameAsync(string username);
     }
 }

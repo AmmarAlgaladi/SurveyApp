@@ -11,8 +11,10 @@ namespace API.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenService _tokenService;
         private readonly UserManager<AppUser> _userManager;
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService, IMapper mapper)
+        private readonly DataContext _context;
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService, IMapper mapper, DataContext context)
         {
+            _context = context;
             _userManager = userManager;
             _tokenService = tokenService;
             _signInManager = signInManager;
@@ -24,7 +26,7 @@ namespace API.Controllers
         public async Task<ActionResult<UserInfoDTO>> Register(RegisterDTO registerDTO)
         {
             if (await UserExists(registerDTO.Username)) return BadRequest("Username is taken");
-            
+
             var user = _mapper.Map<AppUser>(registerDTO);
 
             user.UserName = registerDTO.Username.ToLower();
@@ -57,10 +59,23 @@ namespace API.Controllers
             };
         }
 
+        [HttpPost("add-survey")]
+        public async Task<ActionResult<Survey>> AddSurvey(CreateSurveyDTO surveyDTO)
+        {
+            var survey = _mapper.Map<Survey>(surveyDTO);
+            survey.AppUserId = 1;
+            await _context.Surveys.AddAsync(survey);
+            await _context.SaveChangesAsync();
+
+            return survey;
+            
+        }
+
 
         private async Task<bool> UserExists(string username)
         {
             return await _userManager.Users.AnyAsync(x => x.UserName == username.ToLower());
         }
+
     }
 }

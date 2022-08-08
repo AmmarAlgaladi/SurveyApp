@@ -11,6 +11,9 @@ namespace API.Data
         public DataContext(DbContextOptions options) : base(options)
         {
         }
+        public DbSet<Survey> Surveys { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

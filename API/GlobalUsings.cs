@@ -10,3 +10,4 @@ global using API.Interfaces;
 global using Microsoft.AspNetCore.Mvc;
 global using System.Text;
 global using API.Services;
+global using System.ComponentModel.DataAnnotations;

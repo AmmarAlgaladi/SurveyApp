@@ -5,15 +5,11 @@ using System.Threading.Tasks;
 
 namespace API.Entities
 {
-    public class Response
+    public class Answer
     {
         public int Id { get; set; }
-        public string Answer { get; set; }
+        public string AnswerTxt { get; set; }
         public Question Question { get; set; }
-        public int QuestionId { get; set; }
-
-        public Answer Answers { get; set; }
-
-        public int AnswerId { get; set; }
+        public ICollection<Response> Responses { get; set; }
     }
 }

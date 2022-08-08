@@ -23,5 +23,11 @@ namespace API.Data
             .ProjectTo<UserDTO>(_mapper.ConfigurationProvider)
             .SingleOrDefaultAsync();
         }
+
+        public async Task<AppUser> GetUserByUsernameAsync(string username)
+        {
+            return await _context.Users
+            .Include(s => s.Surveys).SingleOrDefaultAsync(x => x.UserName == username);
+        }
     }
 }
