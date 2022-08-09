@@ -12,7 +12,7 @@ namespace API.Entities
         public DateTime Created { get; set; } = DateTime.UtcNow;
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public int QuestionCount { get; set; }
+        // public int QuestionCount { get; set; }
         public int ResponseCount { get; set; } = 0;
         public bool HasResonse { get; set; } = false;
         public AppUser AppUser { get; set; }

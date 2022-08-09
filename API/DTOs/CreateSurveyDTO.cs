@@ -10,7 +10,9 @@ namespace API.DTOs
         public string Title { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public int QuestionCount { get; set; }
-        public ICollection<QuestionDTO> Question1 { get; set; }
+        // public int QuestionCount { get; set; }
+
+        public List<QuestionDTO> QuestionsToAdd { get; set; }
+        // public ICollection<QuestionDTO> Question1 { get; set; }
     }
 }

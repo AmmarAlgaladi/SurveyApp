@@ -10,7 +10,7 @@ namespace API.Entities
         public int Id { get; set; }
         public string QType { get; set; }
         public string Content { get; set; }
-        public int ChoiceCount { get; set; }
+        // public int ChoiceCount { get; set; }
         // public Survey Survey { get; set; }
         public int SurveyId { get; set; }
         public ICollection<Response> QResponses { get; set; }

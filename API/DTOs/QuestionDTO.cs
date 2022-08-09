@@ -9,8 +9,9 @@ namespace API.DTOs
     {
         public string QType { get; set; }
         public string Content { get; set; }
-        public int ChoiceCount { get; set; }
-        public ICollection<AnswerDTO> Answers { get; set; }
+        // public int ChoiceCount { get; set; }
+        public List<AnswerDTO> AddedAnswers { get; set; }
+        // public ICollection<AnswerDTO> Answers { get; set; }
 
     }
 }

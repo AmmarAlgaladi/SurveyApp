@@ -59,17 +59,27 @@ namespace API.Controllers
             };
         }
 
-        [HttpPost("add-survey")]
-        public async Task<ActionResult<Survey>> AddSurvey(CreateSurveyDTO surveyDTO)
-        {
-            var survey = _mapper.Map<Survey>(surveyDTO);
-            survey.AppUserId = 1;
-            await _context.Surveys.AddAsync(survey);
-            await _context.SaveChangesAsync();
 
-            return survey;
+
+
+        //     [HttpPost("add-survey")]
+        // public async Task<ActionResult<Survey>> AddSurvey(List<CreateSurveyDTO> surveyDTO)
+        // {      
+        //     List<Survey> result = new List<Survey>();
+        //     foreach (var value in surveyDTO)
+        //     {
+        //         var survey = _mapper.Map<Survey>(value);
+        //         survey.AppUserId = 1;
+        //         await _context.Surveys.AddAsync(survey);
+                
+        //         result.Add(survey);
+        //     }
+        //     await _context.SaveChangesAsync();
             
-        }
+            
+        //     return Ok(result);
+            
+        // }
 
 
         private async Task<bool> UserExists(string username)
