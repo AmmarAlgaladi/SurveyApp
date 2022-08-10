@@ -33,7 +33,7 @@ namespace API.Data.Migrations
                     b.Property<string>("AnswerTxt")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("QuestionId")
+                    b.Property<int>("QuestionId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -215,14 +215,14 @@ namespace API.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Answer")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("AnswerId")
                         .HasColumnType("int");
 
                     b.Property<int>("QuestionId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ResponseText")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -230,7 +230,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("QuestionId");
 
-                    b.ToTable("Response");
+                    b.ToTable("Responses");
                 });
 
             modelBuilder.Entity("API.Entities.Survey", b =>
@@ -361,7 +361,9 @@ namespace API.Data.Migrations
                 {
                     b.HasOne("API.Entities.Question", null)
                         .WithMany("QAnswers")
-                        .HasForeignKey("QuestionId");
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("API.Entities.AppUserRole", b =>
@@ -405,32 +407,26 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.Response", b =>
                 {
-                    b.HasOne("API.Entities.Answer", "Answers")
+                    b.HasOne("API.Entities.Answer", null)
                         .WithMany("Responses")
                         .HasForeignKey("AnswerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("API.Entities.Question", "Question")
+                    b.HasOne("API.Entities.Question", null)
                         .WithMany("QResponses")
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Answers");
-
-                    b.Navigation("Question");
                 });
 
             modelBuilder.Entity("API.Entities.Survey", b =>
                 {
-                    b.HasOne("API.Entities.AppUser", "AppUser")
+                    b.HasOne("API.Entities.AppUser", null)
                         .WithMany("Surveys")
                         .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

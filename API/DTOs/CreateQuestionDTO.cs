@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
-    public class QuestionDTO
+    public class CreateQuestionDTO
     {
-        public int Id { get; set; }
         public string QType { get; set; }
         public string Content { get; set; }
-        public int SurveyId { get; set; }
-        public ICollection<AnswerDTO> QAnswers { get; set; }
+        // public int ChoiceCount { get; set; }
+        public List<CreateAnswerDTO> AddedAnswers { get; set; }
+        // public ICollection<AnswerDTO> Answers { get; set; }
+
     }
 }

@@ -10,6 +10,8 @@ namespace API.Interfaces
         void AddSurvey (Survey survey);
         Task<SurveyDTO> GetSurveyByIdAsync(int Id);
         Task<bool> SaveAllAsync();
+        Task<Answer> GetAnswerFromIdAsync(int AnswerId);
+        Task<IEnumerable<SurveyViewDTO>> GetSurveysOfUser(int userId);
         // Task<Survey> GetSurvey(int id);
         // Task<IEnumerable<SurveyDTO>> GetSurveysForUser(string username);
         // Task<bool> SaveAllAsync();

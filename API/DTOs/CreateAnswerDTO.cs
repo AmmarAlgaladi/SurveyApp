@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
-    public class AnswerDTO
+    public class CreateAnswerDTO
     {
-        public int Id { get; set; }
         public string AnswerTxt { get; set; }
     }
 }

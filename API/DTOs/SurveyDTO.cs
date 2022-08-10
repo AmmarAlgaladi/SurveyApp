@@ -12,8 +12,7 @@ namespace API.DTOs
         public DateTime Created { get; set; } = DateTime.UtcNow;
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        // public int QuestionCount { get; set; }
-        public int ResponseCount { get; set; } = 0;
-        public ICollection<Question> SurveyQuestions { get; set; }
+        public int ResponseCount { get; set; }
+        public ICollection<QuestionDTO> SurveyQuestions { get; set; }
     }
 }

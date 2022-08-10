@@ -15,7 +15,7 @@ namespace API.Entities
         // public int QuestionCount { get; set; }
         public int ResponseCount { get; set; } = 0;
         public bool HasResonse { get; set; } = false;
-        public AppUser AppUser { get; set; }
+        // public AppUser AppUser { get; set; }
 
         public int AppUserId { get; set; }
         public ICollection<Question> SurveyQuestions { get; set; }

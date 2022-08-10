@@ -12,7 +12,7 @@ namespace API.DTOs
         public DateTime EndDate { get; set; }
         // public int QuestionCount { get; set; }
 
-        public List<QuestionDTO> QuestionsToAdd { get; set; }
+        public List<CreateQuestionDTO> QuestionsToAdd { get; set; }
         // public ICollection<QuestionDTO> Question1 { get; set; }
     }
 }
